@@ -1,0 +1,9 @@
+[
+    {
+      "id": "sponsor_1",
+      "name": "Boosty Partner",
+      "logoUrl": "/sponsors/boosty.svg",
+      "linkUrl": "https://boosty.to/flowhub",
+      "active": true
+    }
+  ]

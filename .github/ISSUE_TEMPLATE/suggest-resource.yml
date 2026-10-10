@@ -1,0 +1,44 @@
+name: Предложить ресурс
+description: Добавьте новый ресурс в каталог FlowHub
+body:
+  - type: input
+    id: name
+    attributes:
+      label: Название ресурса
+      placeholder: AllTrails
+    validations:
+      required: true
+  - type: input
+    id: url
+    attributes:
+      label: Ссылка
+      placeholder: https://...
+    validations:
+      required: true
+  - type: dropdown
+    id: category
+    attributes:
+      label: Категория
+      options:
+        - Туризм
+        - Велоспорт
+        - Рыбалка
+        - Парашютизм
+        - Серфинг
+        - Бег
+        - Скалолазание
+        - Горные лыжи
+        - Сноуборд
+        - Водные виды спорта
+        - Дайвинг
+        - Скейтбординг
+        - Лонгборд
+        - Другое
+    validations:
+      required: true
+  - type: textarea
+    id: description
+    attributes:
+      label: Краткое описание
+    validations:
+      required: true

@@ -1,0 +1,22 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --color-bg: #ffffff;
+  --color-text: #1f2937;
+  --color-primary: #2563eb;
+}
+
+.dark {
+  --color-bg: #111827;
+  --color-text: #f3f4f6;
+  --color-primary: #60a5fa;
+}
+
+body {
+  background-color: var(--color-bg);
+  color: var(--color-text);
+  transition: background-color 0.3s, color 0.3s;
+  font-family: Inter, system-ui, Avenir, Helvetica, Arial, sans-serif;
+}
