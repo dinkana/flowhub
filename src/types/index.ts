@@ -6,7 +6,6 @@ export interface LocalizedString {
 export interface Category {
   id: string
   parentId: string | null
-  icon: string
   name: LocalizedString
 }
 
@@ -21,7 +20,7 @@ export interface Resource {
   priority?: number
 }
 
-export interface Sponsor {
+export interface Partner {
   id: string
   name: string
   logoUrl: string
@@ -33,14 +32,14 @@ export interface UIStrings {
   title: string
   search_placeholder: string
   suggest_btn: string
-  sponsor_label: string
+  partner_label: string
   choose_direction: string
   back: string
   all_disciplines: string
   all_types: string
   no_resources: string
   choose_category: string
-  sponsorship: string
+  partnership: string
   page_prev: string
   page_next: string
   type_map: string

@@ -1,9 +1,9 @@
 import { defineStore } from 'pinia'
 import { ref, computed, watch } from 'vue'
-import type { Category, Resource, Sponsor, Locale, UIStrings } from '../types'
+import type { Category, Resource, Partner, Locale, UIStrings } from '../types'
 import categoriesData from '../data/categories.json'
 import resourcesData from '../data/resources.json'
-import sponsorsData from '../data/sponsors.json'
+import partnersData from '../data/partners.json'
 import uiData from '../data/ui.json'
 import { initSearch, searchResources } from '../utils/search'
 
@@ -12,7 +12,7 @@ export const useAppStore = defineStore('app', () => {
   const dark = ref(localStorage.getItem('theme') === 'dark')
   const categories = ref<Category[]>(categoriesData as Category[])
   const resources = ref<Resource[]>(resourcesData as Resource[])
-  const sponsors = ref<Sponsor[]>(sponsorsData as Sponsor[])
+  const partners = ref<Partner[]>(partnersData as Partner[])
   const uiStrings = ref<Record<Locale, UIStrings>>(uiData as Record<Locale, UIStrings>)
   
   const searchQuery = ref('')
@@ -23,6 +23,7 @@ export const useAppStore = defineStore('app', () => {
   const itemsPerPage = 12
 
   const t = computed(() => uiStrings.value[locale.value])
+  
   const rootCategories = computed(() => categories.value.filter(c => !c.parentId))
   const subCategories = computed(() => 
     selectedRootId.value ? categories.value.filter(c => c.parentId === selectedRootId.value) : []
@@ -79,6 +80,7 @@ export const useAppStore = defineStore('app', () => {
   })
 
   const totalPages = computed(() => Math.max(1, Math.ceil(filteredResources.value.length / itemsPerPage)))
+  
   const paginatedResources = computed(() => {
     const start = (currentPage.value - 1) * itemsPerPage
     return filteredResources.value.slice(start, start + itemsPerPage)
@@ -96,7 +98,7 @@ export const useAppStore = defineStore('app', () => {
   }
 
   return {
-    locale, dark, categories, resources, sponsors, uiStrings,
+    locale, dark, categories, resources, partners, uiStrings,
     searchQuery, selectedRootId, selectedSubId, selectedType, currentPage, itemsPerPage,
     t, rootCategories, subCategories, filteredResources, totalPages, paginatedResources,
     setLocale, toggleTheme, selectRoot, selectSub, resetSelection, init

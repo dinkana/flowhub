@@ -15,7 +15,7 @@ FlowHub — это независимый каталог проверенных 
 
 ### Партнерство и спонсорство
 Мы предлагаем чистые, ненавязчивые форматы интеграции для брендов, чья аудитория совпадает с нашей. Никаких всплывающих окон или трекеров. Только статичные, эстетичные блоки в каталоге.
-📧 **Контакт для сотрудничества:** sponsor@flowhub.app
+📧 **Контакт для сотрудничества:** 1984clients@gmail.com
 
 ### Поддержать проект
 Развитие каталога требует времени. Вы можете поддержать проект любой удобной суммой:
@@ -38,7 +38,7 @@ The directory is manually curated. Every resource is checked for accuracy and re
 
 ### Partnership and Sponsorship
 We offer clean, non-intrusive integration formats for brands whose audience aligns with ours. No pop-ups, no invasive trackers. Just static, aesthetic sponsor blocks within the catalog.
-📧 **Contact for collaboration:** sponsor@flowhub.app
+📧 **Contact for collaboration:** 1984clients@gmail.com
 
 ### Support the Project
 Maintaining and growing the directory takes time. You can support the project with any amount:

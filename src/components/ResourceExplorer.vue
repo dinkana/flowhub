@@ -1,16 +1,11 @@
 <script setup lang="ts">
 import { useAppStore } from '../stores/app'
 import ResourceCard from './ResourceCard.vue'
-
 const store = useAppStore()
 const typeKeys = ['map', 'federation', 'community', 'media', 'shop', 'other'] as const
 </script>
-
 <template>
-  <div v-if="!store.selectedRootId" class="text-center py-12 text-gray-500 dark:text-gray-400">
-    {{ store.t.choose_category }}
-  </div>
-  <div v-else class="w-full flex flex-col gap-6">
+  <div v-if="store.selectedRootId" class="w-full flex flex-col gap-6">
     <div class="w-full overflow-x-auto pb-2">
       <div class="flex gap-2 min-w-max px-4 sm:px-0">
         <button
@@ -18,8 +13,8 @@ const typeKeys = ['map', 'federation', 'community', 'media', 'shop', 'other'] as
           :class="[
             'px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition border',
             !store.selectedType
-              ? 'bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900 border-gray-800 dark:border-gray-200'
-              : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600'
+              ? 'bg-[#0f172a] dark:bg-[#f1f5f9] text-white dark:text-[#22242a] border-transparent shadow-sm'
+              : 'bg-white dark:bg-[#2b2e36] text-[#64748b] dark:text-[#94a3b8] border-[#d1d5db] dark:border-[#3a3d46]'
           ]"
         >
           {{ store.t.all_types }}
@@ -31,8 +26,8 @@ const typeKeys = ['map', 'federation', 'community', 'media', 'shop', 'other'] as
           :class="[
             'px-3 py-1.5 rounded-lg text-xs font-semibold uppercase transition border',
             store.selectedType === type
-              ? 'bg-gray-800 dark:bg-gray-200 text-white dark:text-gray-900 border-gray-800 dark:border-gray-200'
-              : 'bg-white dark:bg-gray-800 text-gray-600 dark:text-gray-400 border-gray-300 dark:border-gray-600'
+              ? 'bg-[#0f172a] dark:bg-[#f1f5f9] text-white dark:text-[#22242a] border-transparent shadow-sm'
+              : 'bg-white dark:bg-[#2b2e36] text-[#64748b] dark:text-[#94a3b8] border-[#d1d5db] dark:border-[#3a3d46]'
           ]"
         >
           {{ store.t[`type_${type}` as keyof typeof store.t] }}
@@ -46,24 +41,26 @@ const typeKeys = ['map', 'federation', 'community', 'media', 'shop', 'other'] as
         :resource="resource"
       />
     </div>
-    <div v-else class="text-center py-12 text-gray-500 dark:text-gray-400">
+    <div v-else class="text-center py-12 text-[#64748b] dark:text-[#94a3b8]">
       {{ store.t.no_resources }}
     </div>
     <div v-if="store.totalPages > 1" class="flex justify-center items-center gap-4 mt-4">
       <button
         @click="store.currentPage--"
         :disabled="store.currentPage === 1"
-        class="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+        aria-label="Previous page"
+        class="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-[#2b2e36] border border-[#d1d5db] dark:border-[#3a3d46] text-[#0f172a] dark:text-[#f1f5f9] disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#eab308] dark:hover:border-[#fbbf24] transition"
       >
         {{ store.t.page_prev }}
       </button>
-      <span class="text-sm text-gray-600 dark:text-gray-400">
+      <span class="text-sm text-[#64748b] dark:text-[#94a3b8]">
         {{ store.currentPage }} / {{ store.totalPages }}
       </span>
       <button
         @click="store.currentPage++"
         :disabled="store.currentPage === store.totalPages"
-        class="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 text-gray-700 dark:text-gray-300 disabled:opacity-50 disabled:cursor-not-allowed hover:bg-gray-50 dark:hover:bg-gray-700 transition"
+        aria-label="Next page"
+        class="px-4 py-2 rounded-lg text-sm font-medium bg-white dark:bg-[#2b2e36] border border-[#d1d5db] dark:border-[#3a3d46] text-[#0f172a] dark:text-[#f1f5f9] disabled:opacity-50 disabled:cursor-not-allowed hover:border-[#eab308] dark:hover:border-[#fbbf24] transition"
       >
         {{ store.t.page_next }}
       </button>

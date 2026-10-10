@@ -1,46 +1,31 @@
 <script setup lang="ts">
 import { useAppStore } from '../stores/app'
-import { ref, watch } from 'vue'
-
 const store = useAppStore()
-const searchInput = ref(store.searchQuery)
-let timer: ReturnType<typeof setTimeout> | null = null
-
-watch(searchInput, (val) => {
-  if (timer) clearTimeout(timer)
-  timer = setTimeout(() => { store.searchQuery = val }, 300)
-})
 </script>
-
 <template>
-  <header class="sticky top-0 z-50 w-full border-b border-gray-200 dark:border-gray-700 bg-white/80 dark:bg-gray-900/80 backdrop-blur-md">
-    <div class="max-w-7xl mx-auto px-4 py-3 flex flex-col sm:flex-row items-center gap-4">
-      <h1 class="text-xl font-bold text-gray-900 dark:text-gray-100 whitespace-nowrap flex items-center gap-2">
-        <span class="text-blue-600 dark:text-blue-400">◼</span> FlowHub
+  <header class="sticky top-0 z-50 w-full border-b border-[#d1d5db] dark:border-[#3a3d46] bg-white/80 dark:bg-[#22242a]/80 backdrop-blur-md">
+    <div class="max-w-7xl mx-auto px-4 py-3 flex items-center justify-between gap-4">
+      <h1 class="text-xl font-bold text-[#0f172a] dark:text-[#f1f5f9] whitespace-nowrap flex items-center gap-2">
+        <svg class="text-[#eab308] dark:text-[#fbbf24]" xmlns="http://www.w3.org/2000/svg" width="26" height="26" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><path d="M6 5l6 7-6 7"/><path d="M13 5l6 7-6 7"/></svg>
+        FlowHub
       </h1>
-      
-      <div class="flex-1 w-full sm:w-auto">
-        <input
-          v-model="searchInput"
-          type="text"
-          :placeholder="store.t.search_placeholder"
-          class="w-full px-4 py-2 rounded-lg border border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-800 text-gray-900 dark:text-gray-100 placeholder-gray-500 dark:placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-blue-500"
-        />
-      </div>
-
-      <div class="flex items-center gap-2">
+      <div class="flex items-center gap-3">
         <button
           @click="store.toggleTheme"
-          class="px-3 py-1.5 rounded-lg text-sm font-medium bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300 hover:bg-gray-300 dark:hover:bg-gray-600 transition"
-        >{{ store.dark ? '☀' : '☾' }}</button>
+          aria-label="Toggle theme"
+          class="p-2 rounded-lg bg-[#f1f5f9] dark:bg-[#2b2e36] text-[#64748b] dark:text-[#94a3b8] hover:text-[#eab308] dark:hover:text-[#fbbf24] transition"
+        >
+          <svg v-if="store.dark" xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="4"/><path d="M12 2v2"/><path d="M12 20v2"/><path d="m4.93 4.93 1.41 1.41"/><path d="m17.66 17.66 1.41 1.41"/><path d="M2 12h2"/><path d="M20 12h2"/><path d="m6.34 17.66-1.41 1.41"/><path d="m19.07 4.93-1.41 1.41"/></svg>
+          <svg v-else xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+        </button>
         <button
-          @click="store.setLocale('ru')"
-          :class="['px-3 py-1.5 rounded-lg text-sm font-medium transition', store.locale === 'ru' ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300']"
-        >RU</button>
-        <button
-          @click="store.setLocale('en')"
-          :class="['px-3 py-1.5 rounded-lg text-sm font-medium transition', store.locale === 'en' ? 'bg-blue-600 text-white' : 'bg-gray-200 dark:bg-gray-700 text-gray-700 dark:text-gray-300']"
-        >EN</button>
+          @click="store.setLocale(store.locale === 'ru' ? 'en' : 'ru')"
+          aria-label="Toggle language"
+          class="flex items-center rounded-lg text-sm font-medium bg-[#f1f5f9] dark:bg-[#2b2e36] p-0.5 transition"
+        >
+          <span :class="['px-2 py-1 rounded-md transition', store.locale === 'ru' ? 'bg-white dark:bg-[#3a3d46] text-[#0f172a] dark:text-[#f1f5f9] shadow-sm' : 'text-[#64748b] dark:text-[#94a3b8]']">RU</span>
+          <span :class="['px-2 py-1 rounded-md transition', store.locale === 'en' ? 'bg-white dark:bg-[#3a3d46] text-[#0f172a] dark:text-[#f1f5f9] shadow-sm' : 'text-[#64748b] dark:text-[#94a3b8]']">EN</span>
+        </button>
       </div>
     </div>
   </header>
