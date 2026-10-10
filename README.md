@@ -1,10 +1,6 @@
 # FlowHub
 
-**RU** | [EN](#en)
-
----
-
-## ◼ О проекте
+## RU: О проекте
 
 FlowHub — это независимый каталог проверенных ресурсов для активного спорта и хобби. Мы собираем лучшие карты маршрутов, официальные федерации и живые сообщества в одном месте. Без информационного шума, навязчивой рекламы и битых ссылок.
 
@@ -31,7 +27,7 @@ FlowHub — это независимый каталог проверенных 
 
 FlowHub is an independent, curated directory of verified resources for active sports and hobbies. We bring the best route maps, official federations, and active communities together in one place. No information noise, no intrusive ads, no broken links.
 
-### ◈ Who is it for
+### EN: Who is it for
 - **For athletes and enthusiasts:** instant access to verified trails, federation rules, and active communities for your specific sport.
 - **For organizers and brands:** a highly targeted audience actively searching for specific tools, gear, and locations for their activities.
 
