@@ -1,6 +1,7 @@
 <script setup lang="ts">
 import { useAppStore } from '../stores/app'
 import type { Resource } from '../types'
+import { trackGoal } from '../utils/analytics'
 defineProps<{ resource: Resource }>()
 const store = useAppStore()
 </script>
@@ -9,6 +10,7 @@ const store = useAppStore()
     :href="resource.url"
     target="_blank"
     rel="noopener noreferrer"
+    @click="trackGoal('resource_click')"
     class="block p-5 rounded-xl border-2 border-[#d1d5db] dark:border-[#3a3d46] bg-white dark:bg-[#2b2e36] hover:shadow-lg hover:border-[#eab308] dark:hover:border-[#fbbf24] transition group"
   >
     <div class="flex items-start justify-between gap-3 mb-3">

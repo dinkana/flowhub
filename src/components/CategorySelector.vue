@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import { useAppStore } from '../stores/app'
+import { trackGoal } from '../utils/analytics'
 const store = useAppStore()
 </script>
 <template>
@@ -12,7 +13,7 @@ const store = useAppStore()
       <button
         v-for="cat in store.rootCategories"
         :key="cat.id"
-        @click="store.selectRoot(cat.id)"
+        @click="store.selectRoot(cat.id); trackGoal('select_category')"
         class="flex items-center gap-3 p-4 rounded-xl border-2 border-[#d1d5db] dark:border-[#3a3d46] bg-white dark:bg-[#2b2e36] shadow-sm hover:border-[#eab308] dark:hover:border-[#fbbf24] hover:shadow-md transition text-left group"
       >
         <span class="text-[#eab308] dark:text-[#fbbf24] text-xl group-hover:scale-110 transition-transform">▸</span>

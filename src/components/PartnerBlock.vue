@@ -1,9 +1,9 @@
 <script setup lang="ts">
 import { useAppStore } from '../stores/app'
+import { trackGoal } from '../utils/analytics'
 const store = useAppStore()
 const getLogoUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(/^\//, '')}`
 </script>
-
 <template>
   <div v-if="store.partners.some(p => p.active)" class="w-full flex flex-col items-center gap-3 py-4">
     <p class="text-xs text-gray-500 dark:text-gray-400 uppercase tracking-wider">{{ store.t.partner_label }}</p>
@@ -14,6 +14,7 @@ const getLogoUrl = (path: string) => `${import.meta.env.BASE_URL}${path.replace(
         :href="partner.linkUrl"
         target="_blank"
         rel="noopener noreferrer"
+        @click="trackGoal('partner_click')"
         class="flex items-center justify-center p-2 rounded-lg hover:bg-gray-100 dark:hover:bg-gray-800 transition group"
       >
         <img

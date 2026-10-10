@@ -6,6 +6,7 @@ import resourcesData from '../data/resources.json'
 import partnersData from '../data/partners.json'
 import uiData from '../data/ui.json'
 import { initSearch, searchResources } from '../utils/search'
+import { trackPage } from '../utils/analytics'
 
 export const useAppStore = defineStore('app', () => {
   const locale = ref<Locale>((localStorage.getItem('locale') as Locale) || 'ru')
@@ -14,7 +15,6 @@ export const useAppStore = defineStore('app', () => {
   const resources = ref<Resource[]>(resourcesData as Resource[])
   const partners = ref<Partner[]>(partnersData as Partner[])
   const uiStrings = ref<Record<Locale, UIStrings>>(uiData as Record<Locale, UIStrings>)
-  
   const searchQuery = ref('')
   const selectedRootId = ref<string | null>(null)
   const selectedSubId = ref<string | null>(null)
@@ -23,7 +23,6 @@ export const useAppStore = defineStore('app', () => {
   const itemsPerPage = 12
 
   const t = computed(() => uiStrings.value[locale.value])
-  
   const rootCategories = computed(() => categories.value.filter(c => !c.parentId))
   const subCategories = computed(() => 
     selectedRootId.value ? categories.value.filter(c => c.parentId === selectedRootId.value) : []
@@ -48,17 +47,25 @@ export const useAppStore = defineStore('app', () => {
     selectedRootId.value = id
     selectedSubId.value = null
     selectedType.value = null
+    const cat = categories.value.find(c => c.id === id)
+    trackPage(`${import.meta.env.BASE_URL}category/${id}`, cat ? cat.name[locale.value] : id)
   }
 
   const selectSub = (id: string | null) => {
     selectedSubId.value = id
     selectedType.value = null
+    if (!selectedRootId.value) return
+    const root = categories.value.find(c => c.id === selectedRootId.value)
+    const sub = id ? categories.value.find(c => c.id === id) : null
+    const title = root ? `${root.name[locale.value]}${sub ? ` — ${sub.name[locale.value]}` : ''}` : ''
+    trackPage(`${import.meta.env.BASE_URL}category/${selectedRootId.value}${id ? `/${id}` : ''}`, title)
   }
 
   const resetSelection = () => {
     selectedRootId.value = null
     selectedSubId.value = null
     selectedType.value = null
+    trackPage(import.meta.env.BASE_URL, t.value.title)
   }
 
   const filteredResources = computed(() => {
@@ -80,7 +87,6 @@ export const useAppStore = defineStore('app', () => {
   })
 
   const totalPages = computed(() => Math.max(1, Math.ceil(filteredResources.value.length / itemsPerPage)))
-  
   const paginatedResources = computed(() => {
     const start = (currentPage.value - 1) * itemsPerPage
     return filteredResources.value.slice(start, start + itemsPerPage)
