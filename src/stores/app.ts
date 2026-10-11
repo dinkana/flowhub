@@ -20,6 +20,7 @@ export const useAppStore = defineStore('app', () => {
   const selectedSubId = ref<string | null>(null)
   const selectedType = ref<string | null>(null)
   const currentPage = ref(1)
+  const currentView = ref<'home' | 'about'>('home')
   const itemsPerPage = 12
 
   const t = computed(() => uiStrings.value[locale.value])
@@ -47,6 +48,7 @@ export const useAppStore = defineStore('app', () => {
     selectedRootId.value = id
     selectedSubId.value = null
     selectedType.value = null
+    currentView.value = 'home'
     const cat = categories.value.find(c => c.id === id)
     trackPage(`${import.meta.env.BASE_URL}category/${id}`, cat ? cat.name[locale.value] : id)
   }
@@ -65,7 +67,13 @@ export const useAppStore = defineStore('app', () => {
     selectedRootId.value = null
     selectedSubId.value = null
     selectedType.value = null
+    currentView.value = 'home'
     trackPage(import.meta.env.BASE_URL, t.value.title)
+  }
+
+  const showAbout = () => {
+    currentView.value = 'about'
+    trackPage(`${import.meta.env.BASE_URL}about`, t.value.about_title)
   }
 
   const filteredResources = computed(() => {
@@ -105,8 +113,8 @@ export const useAppStore = defineStore('app', () => {
 
   return {
     locale, dark, categories, resources, partners, uiStrings,
-    searchQuery, selectedRootId, selectedSubId, selectedType, currentPage, itemsPerPage,
+    searchQuery, selectedRootId, selectedSubId, selectedType, currentPage, currentView, itemsPerPage,
     t, rootCategories, subCategories, filteredResources, totalPages, paginatedResources,
-    setLocale, toggleTheme, selectRoot, selectSub, resetSelection, init
+    setLocale, toggleTheme, selectRoot, selectSub, resetSelection, showAbout, init
   }
 })

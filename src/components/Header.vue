@@ -11,6 +11,12 @@ const store = useAppStore()
       </h1>
       <div class="flex items-center gap-3">
         <button
+          @click="store.showAbout"
+          class="px-3 py-1.5 rounded-lg text-sm font-medium bg-[#f1f5f9] dark:bg-[#2b2e36] text-[#64748b] dark:text-[#94a3b8] hover:text-[#eab308] dark:hover:text-[#fbbf24] transition"
+        >
+          {{ store.t.about_link }}
+        </button>
+        <button
           @click="store.toggleTheme"
           aria-label="Toggle theme"
           class="p-2 rounded-lg bg-[#f1f5f9] dark:bg-[#2b2e36] text-[#64748b] dark:text-[#94a3b8] hover:text-[#eab308] dark:hover:text-[#fbbf24] transition"

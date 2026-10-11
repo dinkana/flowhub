@@ -36,6 +36,10 @@ export interface UIStrings {
   fix_resource: string
   delete_resource: string
   partner_label: string
+  partner_empty_title: string
+  partner_empty_desc: string
+  partner_empty_cta: string
+  partner_copied: string
   choose_direction: string
   back: string
   all_disciplines: string
@@ -53,6 +57,19 @@ export interface UIStrings {
   type_other: string
   region_ru: string
   region_global: string
+  about_link: string
+  about_title: string
+  about_p1: string
+  about_p2: string
+  about_p3: string
+  about_p4: string
+  about_p5: string
+  about_p6: string
+  about_p7: string
+  about_p8: string
+  about_email: string
+  about_p9: string
+  copied_text: string
 }
 
 export type Locale = 'ru' | 'en'
