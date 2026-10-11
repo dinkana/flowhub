@@ -16,6 +16,7 @@
   {"id":"skydiving","parentId":null,"name":{"ru":"Парашютизм","en":"Skydiving"}},
   {"id":"skydiving_jump","parentId":"skydiving","name":{"ru":"Скайдайвинг","en":"Skydiving"}},
   {"id":"skydiving_base","parentId":"skydiving","name":{"ru":"Бейсджампинг","en":"BASE Jumping"}},
+  {"id":"skydiving_wingsuit","parentId":"skydiving","name":{"ru":"Вингсьют","en":"Wingsuit"}},
   {"id":"surfing","parentId":null,"name":{"ru":"Серфинг","en":"Surfing"}},
   {"id":"surfing_wave","parentId":"surfing","name":{"ru":"Волновой серфинг","en":"Wave Surfing"}},
   {"id":"surfing_kite","parentId":"surfing","name":{"ru":"Кайтсёрфинг","en":"Kitesurfing"}},
@@ -24,10 +25,10 @@
   {"id":"running_marathon","parentId":"running","name":{"ru":"Марафон","en":"Marathon"}},
   {"id":"running_trail","parentId":"running","name":{"ru":"Трейлраннинг","en":"Trail Running"}},
   {"id":"running_sky","parentId":"running","name":{"ru":"Скайраннинг","en":"Skyrunning"}},
-  {"id":"climbing","parentId":null,"name":{"ru":"Скалолазание","en":"Climbing"}},
-  {"id":"climbing_sport","parentId":"climbing","name":{"ru":"Спортивное лазание","en":"Sport Climbing"}},
-  {"id":"climbing_boulder","parentId":"climbing","name":{"ru":"Болдеринг","en":"Bouldering"}},
-  {"id":"alpinism","parentId":null,"name":{"ru":"Альпинизм","en":"Alpinism"}},
+  {"id":"alpinism","parentId":null,"name":{"ru":"Альпинизм и скалолазание","en":"Alpinism & Climbing"}},
+  {"id":"alpinism_climbing","parentId":"alpinism","name":{"ru":"Скалолазание","en":"Climbing"}},
+  {"id":"alpinism_sport","parentId":"alpinism","name":{"ru":"Спортивное лазание","en":"Sport Climbing"}},
+  {"id":"alpinism_boulder","parentId":"alpinism","name":{"ru":"Болдеринг","en":"Bouldering"}},
   {"id":"skiing","parentId":null,"name":{"ru":"Горные лыжи","en":"Skiing"}},
   {"id":"skiing_freestyle","parentId":"skiing","name":{"ru":"Фристайл","en":"Freestyle"}},
   {"id":"skiing_freeride","parentId":"skiing","name":{"ru":"Фрирайд","en":"Freeride"}},
@@ -47,4 +48,4 @@
   {"id":"longboard","parentId":null,"name":{"ru":"Лонгборд","en":"Longboard"}},
   {"id":"longboard_dh","parentId":"longboard","name":{"ru":"Даунхилл","en":"Downhill"}},
   {"id":"longboard_cruise","parentId":"longboard","name":{"ru":"Круизинг","en":"Cruising"}}
-]
+  ]
