@@ -32,6 +32,9 @@ export interface UIStrings {
   title: string
   search_placeholder: string
   suggest_btn: string
+  suggest_resource: string
+  fix_resource: string
+  delete_resource: string
   partner_label: string
   choose_direction: string
   back: string

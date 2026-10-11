@@ -17,9 +17,19 @@ const store = useAppStore()
       </div>
     </div>
     <div class="flex flex-col gap-2 pt-4 border-t border-[#d1d5db] dark:border-[#3a3d46]">
-      <a href="https://github.com/dinkana/flowhub/issues/new?template=suggest-resource.yml" target="_blank" @click="trackGoal('suggest_resource')" class="text-[#eab308] dark:text-[#fbbf24] hover:underline font-medium">
-        {{ store.t.suggest_btn }}
-      </a>
+      <div class="flex flex-wrap justify-center gap-3 text-sm">
+        <a href="https://forms.gle/Yj7kjSDQbqXzb3o77" target="_blank" rel="noopener noreferrer" @click="trackGoal('suggest_resource')" class="text-[#eab308] dark:text-[#fbbf24] hover:underline font-medium">
+          {{ store.t.suggest_resource }}
+        </a>
+        <span class="text-[#64748b] dark:text-[#94a3b8]">|</span>
+        <a href="https://forms.gle/2wmX7qjCQzaSS69F7" target="_blank" rel="noopener noreferrer" @click="trackGoal('fix_resource')" class="text-[#eab308] dark:text-[#fbbf24] hover:underline font-medium">
+          {{ store.t.fix_resource }}
+        </a>
+        <span class="text-[#64748b] dark:text-[#94a3b8]">|</span>
+        <a href="https://forms.gle/Wv3TJNuyHpcRFdtP6" target="_blank" rel="noopener noreferrer" @click="trackGoal('delete_resource')" class="text-[#eab308] dark:text-[#fbbf24] hover:underline font-medium">
+          {{ store.t.delete_resource }}
+        </a>
+      </div>
       <p>
         {{ store.t.partnership }}: <a href="mailto:1984clients@gmail.com" class="text-[#eab308] dark:text-[#fbbf24] hover:underline">1984clients@gmail.com</a>
       </p>
